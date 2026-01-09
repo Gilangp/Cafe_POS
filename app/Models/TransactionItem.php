@@ -15,7 +15,8 @@ class TransactionItem extends Model
         'transaction_id',
         'menu_id',
         'quantity',
-        'price'
+        'price',
+        'subtotal'
     ];
 
     // 🔗 RELATIONSHIPS
