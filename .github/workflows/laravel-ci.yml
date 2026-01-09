@@ -2,9 +2,9 @@ name: Laravel CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, develop ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, develop ]
 
 jobs:
   test:
@@ -22,11 +22,17 @@ jobs:
       - name: Copy env
         run: cp .env.example .env
 
-      - name: Install dependencies
+      - name: Install composer dependencies
         run: composer install --no-interaction --prefer-dist
+
+      - name: Install NPM dependencies
+        run: npm ci
 
       # - name: Generate app key
       #   run: php artisan key:generate
+
+      - name: Build assets
+        run: npm run build
 
       - name: Setup SQLite database
         run: |
