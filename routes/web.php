@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 
 // Guest routes (belum login)
 Route::middleware('guest')->group(function () {
@@ -16,8 +17,9 @@ Route::middleware('auth')->group(function () {
 
     // Admin only routes
     Route::middleware('role:admin')->prefix('admin')->group(function () {
-        // User Management (akan dibuat di step 7)
-        // Route::resource('users', UserController::class);
+        // User Management
+        Route::resource('users', UserController::class);
+        Route::patch('users/{user}/toggle-status', [UserController::class, 'toggleStatus'])->name('users.toggle-status');
 
         // Menu Management (akan dibuat di step 10)
         // Route::resource('menus', MenuController::class);
