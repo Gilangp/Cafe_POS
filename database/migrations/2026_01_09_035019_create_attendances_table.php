@@ -17,7 +17,7 @@ return new class extends Migration
             $table->date('date');
             $table->time('check_in')->nullable();
             $table->time('check_out')->nullable();
-            $table->enum('status', ['hadir', 'izin', 'sakit', 'alpha'])->default('hadir');
+            $table->enum('status', ['hadir', 'izin', 'sakit', 'alpha'])->default('alpha');
             $table->timestamps();
 
             $table->unique(['user_id', 'date']);
